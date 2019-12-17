@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service'
 import { Todo } from '../../models/Todo';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-todos',
@@ -23,5 +25,9 @@ export class TodosComponent implements OnInit {
     // remove from server
     this.todoService.deleteTodo(todo).subscribe();
   }
-
+  addTodo(todo:Todo) {
+    this.todoService.addTodo(todo).subscribe(todo => {
+      this.todos.push(todo);
+    })
+  }
 }
