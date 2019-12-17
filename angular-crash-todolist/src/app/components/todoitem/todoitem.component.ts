@@ -1,6 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { Todo } from 'src/app/models/Todo';
-import { splitClasses } from '@angular/compiler';
 
 @Component({
   selector: 'app-todoitem',
@@ -22,5 +21,11 @@ export class TodoitemComponent implements OnInit {
     }
     return classes;
   }
-  
+  onToggle(todo) {
+    todo.completed = !todo.completed;
+  }
+  onDelete(todo) {
+    console.log('delete');
+  }
+
 }
